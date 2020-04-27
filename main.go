@@ -14,6 +14,7 @@ import (
 
 func main() {
   
+// TODO get image from command line
   reader, err := os.Open("/Users/majagunna/Desktop/a.jpg")
   
   if err != nil {
@@ -26,9 +27,12 @@ func main() {
     log.Fatal(err)
   }
 
+//   TODO resize image 
+
   bounds := m.Bounds()
 
   // asciiLength := 70
+//   TODO refactor 
   for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
     for x := bounds.Min.X; x < bounds.Max.X; x++ {
       r, g, b, _ := m.At(x, y).RGBA()
