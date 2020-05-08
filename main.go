@@ -14,8 +14,11 @@ import (
 
 func main() {
   
-// TODO get image from command line
-  reader, err := os.Open("/Users/majagunna/Desktop/a.jpg")
+  image_name := os.Args[1]
+
+  // TODO throw error if argument is missing
+  
+  reader, err := os.Open(image_name)
   
   if err != nil {
       log.Fatal(err)
@@ -27,7 +30,7 @@ func main() {
     log.Fatal(err)
   }
 
-//   TODO resize image 
+//   TODO resize image so it fits into the terminal
 
   bounds := m.Bounds()
 
@@ -40,9 +43,9 @@ func main() {
       total := uint32(r) + uint32(g) + uint32(b)
       asciiIndex  := uint32(float32(total) / float32(199999) * float32(asciiLength))
       
-      fmt.Print(string(asciiCharacters[asciiIndex ]))
-      fmt.Print(string(asciiCharacters[asciiIndex ]))
-      fmt.Print(string(asciiCharacters[asciiIndex ]))
+      for thickness := 0; thickness < 3; thickness++ {
+        fmt.Print(string(asciiCharacters[asciiIndex ]))
+      }
     }
     fmt.Println("\n")
   }
